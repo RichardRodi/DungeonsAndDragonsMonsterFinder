@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Monsters>
+
+<h2>D&D Monsters</h2>
+<table class="table">
+    <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Meta</th>
+        <th>Armor Class</th>
+        <th>Hit Points</th>
+        <th>Speed</th>
+        
+    </tr>
+
+    @foreach (var monster in @Model)
+    {
+        <tr>
+            <td><img src="@monster.img_url" alt="Monster Image" style="max-width: 120px; max-height: 120px;" /></td> 
+            <td>@monster.name</td>
+            <td>@monster.meta</td>
+            <td>@monster.ArmorClass</td>
+            <td>@monster.HitPoints</td>
+            <td>@monster.Speed</td>
+
+          
+        </tr>
+    }
+   
+
+</table>
