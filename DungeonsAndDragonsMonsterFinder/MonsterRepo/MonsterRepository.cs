@@ -19,6 +19,25 @@ namespace DungeonsAndDragonsMonsterFinder.MonsterRepo
             {
                 return _conn.Query<Monsters>("SELECT * FROM Monsters;");
             }
-        
+
+        public IEnumerable<Monsters> SearchMonstersArmorClass(string searchString)
+        {
+
+            return _conn.Query<Monsters>("WHERE NAME LIKE @ArmorClass ORDER BY ArmorClass ASC;", new { ArmorClass = "%" + searchString + "%" });
+        }
+
+        public IEnumerable<Monsters> SearchMonstersMeta(string searchString)
+        {
+            return _conn.Query<Monsters>("SELECT * FROM Monsters WHERE NAME LIKE @meta;", new { meta = "%" + searchString + "%" });
+        }
+
+        public IEnumerable<Monsters> SearchMonstersName(string searchString)
+        {
+            return _conn.Query<Monsters>("SELECT * FROM Monsters WHERE NAME LIKE @name;", new { name = "%" + searchString + "%" });
+        }
+
+
+
+       
     }
 }

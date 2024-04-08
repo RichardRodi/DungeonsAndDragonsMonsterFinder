@@ -1,4 +1,5 @@
-﻿using DungeonsAndDragonsMonsterFinder.MonsterRepo;
+﻿using DungeonsAndDragonsMonsterFinder.Models;
+using DungeonsAndDragonsMonsterFinder.MonsterRepo;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DungeonsAndDragonsMonsterFinder.Controllers
@@ -18,5 +19,13 @@ namespace DungeonsAndDragonsMonsterFinder.Controllers
             var monsters = repo.GetAllMonsters();
             return View(monsters);
         }
+
+        public IActionResult Search(string searchStringName)
+        {
+            var searchResults = repo.SearchMonstersName(searchStringName);
+            return View(searchResults);
+        }
+
+
     }
 }

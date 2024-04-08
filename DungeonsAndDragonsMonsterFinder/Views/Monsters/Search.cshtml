@@ -1,0 +1,112 @@
+﻿@model IEnumerable<Monsters>
+
+@using (Html.BeginForm("Search", "Monsters", FormMethod.Get))
+{
+    <p>
+        Find by name: @Html.TextBox("searchStringName")
+        <input type="submit" value="Search" />
+    </p>
+
+}
+@foreach (var monster in Model)
+{
+    <div class="monster-box"> </div>
+    <img src="@monster.img_url" alt="@monster.name" style="max-width: 250px; max-height: 250px;" />
+
+    <h3>@monster.name</h3>
+    <p>@monster.meta</p>
+
+    <div class="stats-box">
+        <h4>Attributes</h4>
+        <ul>
+            <li><strong>Armor Class:</strong> @monster.ArmorClass</li>
+            <li><strong>Hit Points:</strong> @monster.HitPoints</li>
+            <li><strong>Speed:</strong> @monster.Speed</li>
+        </ul>
+    </div>
+
+    <div class="stats-box">
+        <h4>Abilities</h4>
+        <ul>
+            <li><strong>STR:</strong> @monster.STR (@monster.STR_mod)</li>
+            <li><strong>DEX:</strong> @monster.DEX (@monster.DEX_mod)</li>
+            <li><strong>CON:</strong> @monster.CON (@monster.CON_mod)</li>
+            <li><strong>INT:</strong> @monster.INT (@monster.INT_mod)</li>
+            <li><strong>WIS:</strong> @monster.WIS (@monster.WIS_mod)</li>
+            <li><strong>CHA:</strong> @monster.CHA (@monster.CHA_mod)</li>
+        </ul>
+
+        <h4>Saving Throws</h4>
+        <p>@monster.SavingThrows</p>
+
+        <h4>Skills</h4>
+        <p>@monster.Skills</p>
+
+        <h4>Senses</h4>
+        <p>@monster.Senses</p>
+
+        <h4>Languages</h4>
+        <p>@monster.Languages</p>
+
+        <h4>Challenge</h4>
+        <p>@monster.Challenge</p>
+
+        <h4>Traits</h4>
+        <p>@monster.Traits</p>
+
+        <h4>Actions</h4>
+        <p>@monster.Actions</p>
+
+        @if (!string.IsNullOrEmpty(monster.Actions))
+        {
+            <div class="traits-box">
+                <h4>Actions</h4>
+                <p>@monster.Actions</p>
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(monster.LegendaryActions))
+        {
+            <div class="traits-box">
+                <h4>Legendary Actions</h4>
+                <p>@monster.LegendaryActions</p>
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(monster.DamageImmunities))
+        {
+            <div class="traits-box">
+                <h4>Damage Immunities</h4>
+                <p>@monster.DamageImmunities</p>
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(monster.ConditionImmunities))
+        {
+            <div class="traits-box">
+                <h4>Condition Immunities</h4>
+                <p>@monster.ConditionImmunities</p>
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(monster.DamageResistances))
+        {
+            <div class="traits-box">
+                <h4>Damage Resistances</h4>
+                <p>@monster.DamageResistances</p>
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(monster.DamageVulnerabilities))
+        {
+            <div class="traits-box">
+                <h4>Damage Vulnerabilities</h4>
+                <p>@monster.DamageVulnerabilities</p>
+            </div>
+        }
+    </div>
+  
+}
+
+
+</table>
