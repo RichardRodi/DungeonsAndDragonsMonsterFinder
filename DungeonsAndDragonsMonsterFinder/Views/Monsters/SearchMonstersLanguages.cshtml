@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<Monsters>
-
 <style>
     body {
         background-color: black;
@@ -12,7 +11,6 @@
         Find by name: @Html.TextBox("searchStringName")
         <input type="submit" value="Search" />
     </p>
-
 
 }
 @using (Html.BeginForm("SearchMonstersMetaSize", "Monsters", "Post"))
@@ -57,6 +55,9 @@
         <input type="submit" value="Sort" />
     </p>
 }
+
+
+
 @foreach (var monster in Model)
 {
     <div class="monster-box"> </div>
@@ -107,8 +108,7 @@
         <p>@monster.Actions</p>
 
     </div>
-  
-}
 
+}
 
 </table>

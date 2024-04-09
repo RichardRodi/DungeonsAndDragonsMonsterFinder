@@ -8,6 +8,7 @@ namespace DungeonsAndDragonsMonsterFinder.Controllers
     {
         private readonly IMonsterRepository repo;
 
+        // Have all your data //
         public MonstersController(IMonsterRepository repo)
         {
             this.repo = repo;
@@ -16,8 +17,8 @@ namespace DungeonsAndDragonsMonsterFinder.Controllers
 
         public IActionResult Index()
         {
-            var monsters = repo.GetAllMonsters();
-            return View(monsters);
+            var monster = repo.GetAllMonsters().ToList();
+            return View(monster);
         }
 
         public IActionResult Search(string searchStringName)
@@ -26,6 +27,28 @@ namespace DungeonsAndDragonsMonsterFinder.Controllers
             return View(searchResults);
         }
 
+        public IActionResult SearchMonstersMetaSize(string size)
+        {
+            var searchResults = repo.SearchMonstersMetaSize(size);
+            return View(searchResults);
+        }
 
+        public IActionResult SearchMonstersLanguages(string language)
+        {
+            var searchResults = repo.SearchMonstersLanguages(language);
+            return View(searchResults);
+        }
+
+        public IActionResult SearchMonstersTraits(string trait)
+        {
+            var searchResults = repo.SearchMonstersLanguages(trait);
+            return View(searchResults);
+        }
+
+        public IActionResult IndividualView(string name)
+        {
+            var monster = repo.GetMonster(name);
+            return View(monster);
+        }
     }
 }

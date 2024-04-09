@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<Monsters>
-
 <style>
     body {
         background-color: black;
@@ -12,7 +11,6 @@
         Find by name: @Html.TextBox("searchStringName")
         <input type="submit" value="Search" />
     </p>
-
 
 }
 @using (Html.BeginForm("SearchMonstersMetaSize", "Monsters", "Post"))
@@ -57,58 +55,28 @@
         <input type="submit" value="Sort" />
     </p>
 }
-@foreach (var monster in Model)
+
+
 {
-    <div class="monster-box"> </div>
-    <img src="@monster.img_url" alt="@monster.name" style="max-width: 250px; max-height: 250px;" />
+    <table class="table">
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Details</th>
+        </tr>
 
-    <h3>@monster.name</h3>
-    <p>@monster.meta</p>
+        @foreach (var monster in Model)
+        {
+            <tr>
+                <td><img src="@monster.img_url" alt="@monster.name" style="max-width: 100px; max-height: 100px;" /></td>
+                <td>@monster.name</td>
+                <td><a href="/monster/IndvidualView/@monster.name">View Details</a> </td>
 
-    <div class="stats-box">
-        <h4>Attributes</h4>
-        <ul>
-            <li><strong>Armor Class:</strong> @monster.ArmorClass</li>
-            <li><strong>Hit Points:</strong> @monster.HitPoints</li>
-            <li><strong>Speed:</strong> @monster.Speed</li>
-        </ul>
-    </div>
+            </tr>
+        }
 
-    <div class="stats-box">
-        <h4>Abilities</h4>
-        <ul>
-            <li><strong>STR:</strong> @monster.STR (@monster.STR_mod)</li>
-            <li><strong>DEX:</strong> @monster.DEX (@monster.DEX_mod)</li>
-            <li><strong>CON:</strong> @monster.CON (@monster.CON_mod)</li>
-            <li><strong>INT:</strong> @monster.INT (@monster.INT_mod)</li>
-            <li><strong>WIS:</strong> @monster.WIS (@monster.WIS_mod)</li>
-            <li><strong>CHA:</strong> @monster.CHA (@monster.CHA_mod)</li>
-        </ul>
-
-        <h4>Saving Throws</h4>
-        <p>@monster.SavingThrows</p>
-
-        <h4>Skills</h4>
-        <p>@monster.Skills</p>
-
-        <h4>Senses</h4>
-        <p>@monster.Senses</p>
-
-        <h4>Languages</h4>
-        <p>@monster.Languages</p>
-
-        <h4>Challenge</h4>
-        <p>@monster.Challenge</p>
-
-        <h4>Traits</h4>
-        <p>@monster.Traits</p>
-
-        <h4>Actions</h4>
-        <p>@monster.Actions</p>
-
-    </div>
-  
 }
 
 
 </table>
+}

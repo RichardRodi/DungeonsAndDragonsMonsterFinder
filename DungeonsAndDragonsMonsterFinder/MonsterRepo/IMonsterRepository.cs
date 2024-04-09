@@ -8,8 +8,12 @@ namespace DungeonsAndDragonsMonsterFinder.MonsterRepo
 
         IEnumerable<Monsters> SearchMonstersName(string searchStringName);
 
-        IEnumerable<Monsters> SearchMonstersMeta(string searchStringMeta);
+        IEnumerable<Monsters> SearchMonstersMetaSize(string size);
 
-        IEnumerable<Monsters> SearchMonstersArmorClass(string searchStringArmorClass);
+        IEnumerable<Monsters> SearchMonstersLanguages(string language);
+
+        IEnumerable<Monsters> SearchMonstersTraits(string trait);
+
+        Monsters GetMonster(string name);
     }
 }

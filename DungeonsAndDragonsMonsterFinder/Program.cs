@@ -1,3 +1,4 @@
+using DungeonsAndDragonsMonsterFinder.Controllers;
 using DungeonsAndDragonsMonsterFinder.MonsterRepo;
 using MySql.Data.MySqlClient;
 using System.Data;
@@ -13,9 +14,7 @@ builder.Services.AddScoped<IDbConnection>((s) =>
     conn.Open();
     return conn;
 });
-
 builder.Services.AddTransient<IMonsterRepository, MonsterRepository>();
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

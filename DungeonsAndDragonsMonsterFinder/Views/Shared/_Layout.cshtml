@@ -13,6 +13,12 @@
     <link rel="stylesheet" href="~/Dungeons And Dragons Monster Finder.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+        }
+    </style>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid"> 
@@ -36,18 +42,10 @@
                         @using (Html.BeginForm("Search", "Monsters", FormMethod.Get))
                         {
                             <p>
-                                Find by Monster Name: @Html.TextBox("searchString")
+                                Find by name: @Html.TextBox("searchStringName")
                                 <input type="submit" value="Search" />
                             </p>
                         }
-                       
-@*                         @using (Html.BeginForm("Search", "Monsters", FormMethod.Get))
-                        {
-                            <p>
-                                Find by name: @Html.TextBox("searchString")
-                                <input type="submit" value =  "Search" />
-                            </p>
-                        } *@
                     </ul>
                 </div>
             </div>
