@@ -99,13 +99,13 @@ namespace DungeonsAndDragonsMonsterFinder.MonsterRepo
 
         public IEnumerable<Monsters> SearchMonstersTraits(string trait)
         {
-            return _conn.Query<Monsters>("SELECT * FROM Monsters WHERE NAME LIKE @Traits;", new { Traits = "%" + trait + "%" });
+            return _conn.Query<Monsters>("SELECT * FROM Monsters WHERE TRAITS LIKE @Traits;", new { Traits = "%" + trait + "%" });
         }
 
 
-        public Monsters GetMonster(string name)
+        public Monsters GetMonster(string monsterId)
         {
-            return _conn.QuerySingle<Monsters>("\"SELECT * FROM Monsters WHERE NAME = @name;", new { name = name });
+            return _conn.QuerySingle<Monsters>("SELECT * FROM Monsters WHERE MonsterId = @MonsterId", new { MonsterId = monsterId });
         }
     }
 }

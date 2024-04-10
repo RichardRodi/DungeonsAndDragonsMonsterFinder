@@ -27,6 +27,7 @@ namespace DungeonsAndDragonsMonsterFinder.Controllers
             return View(searchResults);
         }
 
+
         public IActionResult SearchMonstersMetaSize(string size)
         {
             var searchResults = repo.SearchMonstersMetaSize(size);
@@ -41,13 +42,13 @@ namespace DungeonsAndDragonsMonsterFinder.Controllers
 
         public IActionResult SearchMonstersTraits(string trait)
         {
-            var searchResults = repo.SearchMonstersLanguages(trait);
+            var searchResults = repo.SearchMonstersTraits(trait);
             return View(searchResults);
         }
 
-        public IActionResult IndividualView(string name)
+        public IActionResult IndividualView(string monsterId)
         {
-            var monster = repo.GetMonster(name);
+            var monster = repo.GetMonster(monsterId);
             return View(monster);
         }
     }

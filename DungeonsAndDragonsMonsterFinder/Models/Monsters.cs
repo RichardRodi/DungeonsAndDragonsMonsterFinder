@@ -6,9 +6,9 @@
         {
 
         }
-
-        public string name { get; set; }
-        public string meta { get; set; }
+        public int MonsterId { get; set; }
+        public string Name { get; set; }
+        public string Meta { get; set; }
         public string ArmorClass { get; set; }
         public string HitPoints { get; set; }
         public string Speed { get; set; }
