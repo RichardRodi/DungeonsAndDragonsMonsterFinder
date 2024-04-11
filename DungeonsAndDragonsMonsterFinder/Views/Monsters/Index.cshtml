@@ -71,21 +71,20 @@
 </div>
 
 <table class="table">
-	<tr>
-        <th>MonsterID</th>
-		<th>Image</th>
-        <th>Name</th>
-        <th>Details</th>
+    <tr>
+        <th style="color: rgb(242, 141, 107); font-weight: bold;">MonsterID</th>
+        <th style="color: rgb(242, 141, 107); font-weight: bold;">Image</th>
+        <th style="color: rgb(242, 141, 107); font-weight: bold;">Name</th>
+        <th style="color: rgb(242, 141, 107); font-weight: bold;">Details</th>
     </tr>
 
     @foreach (var monster in Model)
     {
         <tr>
-            <td>@monster.MonsterId</td>
-			<td><img src="@monster.img_url" alt="@monster.Name" style="max-width: 100px; max-height: 100px;" /></td>
-            <td>@monster.Name</td>
-            <td><a href="/Monsters/IndividualView?MonsterId=@monster.MonsterId">View Details</a></td>
-           
+            <td style="color: rgb(242, 141, 107);">@monster.MonsterId</td>
+            <td><img src="@monster.img_url" alt="@monster.Name" style="max-width: 100px; max-height: 100px;" /></td>
+            <td style="color: rgb(242, 141, 107);">@monster.Name</td>
+            <td style="color: rgb(242, 141, 107);"><a href="/Monsters/IndividualView?MonsterId=@monster.MonsterId">View Details</a></td>
         </tr>
     }
 </table>

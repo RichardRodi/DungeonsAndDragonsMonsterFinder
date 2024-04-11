@@ -8,6 +8,15 @@ html {
   }
 }
 
+img {
+    width: 250px;
+    height: auto;
+    border: 1px solid black;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
@@ -18,5 +27,57 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-size: contain;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/d/df/Smaug_par_David_Demaret.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-bottom: 60px;
+}
+
+
+#monsterBox {
+    width: fit-content;
+    height: auto;
+    resize: both;
+    overflow: auto;
+    border: 1px solid black;
+    padding: 20px;
+    background-color: white;
+    color: black;
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+    background-color: #333;
+    color: rgb(242, 141, 107);
+    padding: 20px;
+}
+#horizontal-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#flex-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+#column {
+    flex: 1;
+    margin-right: 20px; 
+}
+
+#attributes, #abilities, .other-details {
+    margin-bottom: 20px;
+}
+
+    #attributes, #abilities, .other-details p {
+        margin: 5px 0;
+    }
+
+#ability-column {
+    display: flex;
+    flex-direction: column;
+    width: 50%; 
 }

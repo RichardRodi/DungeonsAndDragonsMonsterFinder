@@ -66,97 +66,108 @@
     </p>
 }
 
-
-<div class="monster-details">
-    <div class="monster-image">
-        <img src="@Model.img_url" alt="@Model.Name" />
+<div id="monsterBox" class="flex-container">
+    <div id="monster-image">
+        <img src="@Model.img_url" />
     </div>
 
-    <div class="monster-info">
+    <div id="monster-info">
         <h2>@Model.Name</h2>
         <p>@Model.Meta</p>
 
-        <div class="attributes">
-            <h3>Attributes</h3>
-            <ul>
-                <li>Armor Class: @Model.ArmorClass</li>
-                <li>Hit Points: @Model.HitPoints</li>
-                <li>Speed: @Model.Speed</li>
-            </ul>
+        <div id="flex-container">
+            <div id="column">
+                <div id="attributes">
+                    <h3>Attributes</h3>
+                    <p>Armor Class: @Model.ArmorClass</p>
+                    <p>Hit Points: @Model.HitPoints</p>
+                    <p>Speed: @Model.Speed</p>
+                </div>
+            </div>
+
+            <div id="column">
+                <div id="abilities">
+                    <h3>Abilities</h3>
+                    <div class="ability-column">
+                        <p>STR: @Model.STR (@Model.STR_mod)</p>
+                        <p>DEX: @Model.DEX (@Model.DEX_mod)</p>
+                    </div>
+                    <div class="ability-column">
+                        <p>CON: @Model.CON (@Model.CON_mod)</p>
+                        <p>INT: @Model.INT (@Model.INT_mod)</p>
+                    </div>
+                    <div class="ability-column">
+                        <p>WIS: @Model.WIS (@Model.WIS_mod)</p>
+                        <p>CHA: @Model.CHA (@Model.CHA_mod)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="column">
+                <div class="other-details">
+                    <h3>Other Details</h3>
+                    <p><strong>Saving Throws:</strong> @Model.SavingThrows</p>
+                    <p><strong>Skills:</strong> @Model.Skills</p>
+                    <p><strong>Senses:</strong> @Model.Senses</p>
+                    <p><strong>Languages:</strong> @Model.Languages</p>
+                    <p><strong>Challenge:</strong> @Model.Challenge</p>
+                </div>
+            </div>
         </div>
+                <div id="traits">
+                    <h3>Traits</h3>
+                    <p>@Model.Traits</p>
+                </div>
+            </div>
 
-        <div class="abilities">
-            <h3>Abilities</h3>
-            <ul>
-                <li><strong>STR:</strong> @Model.STR (@Model.STR_mod)</li>
-                <li><strong>DEX:</strong> @Model.DEX (@Model.DEX_mod)</li>
-                <li><strong>CON:</strong> @Model.CON (@Model.CON_mod)</li>
-                <li><strong>INT:</strong> @Model.INT (@Model.INT_mod)</li>
-                <li><strong>WIS:</strong> @Model.WIS (@Model.WIS_mod)</li>
-                <li><strong>CHA:</strong> @Model.CHA (@Model.CHA_mod)</li>
-            </ul>
+            <div id="column">
+                @if (!string.IsNullOrEmpty(Model.Actions))
+                {
+                    <div class="actions">
+                        <h3>Actions</h3>
+                        <p>@Model.Actions</p>
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(Model.LegendaryActions))
+                {
+                    <div class="legendary-actions">
+                        <h3>Legendary Actions</h3>
+                        <p>@Model.LegendaryActions</p>
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(Model.DamageImmunities))
+                {
+                    <div class="damage-immunities">
+                        <h3>Damage Immunities</h3>
+                        <p>@Model.DamageImmunities</p>
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(Model.ConditionImmunities))
+                {
+                    <div class="condition-immunities">
+                        <h3>Condition Immunities</h3>
+                        <p>@Model.ConditionImmunities</p>
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(Model.DamageResistances))
+                {
+                    <div class="damage-resistances">
+                        <h3>Damage Resistances</h3>
+                        <p>@Model.DamageResistances</p>
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(Model.DamageVulnerabilities))
+                {
+                    <div class="damage-vulnerabilities">
+                        <h3>Damage Vulnerabilities</h3>
+                        <p>@Model.DamageVulnerabilities</p>
+                    </div>
+                }
+            </div>
         </div>
-
-        <div class="other-details">
-            <h3>Other Details</h3>
-            <p><strong>Saving Throws:</strong> @Model.SavingThrows</p>
-            <p><strong>Skills:</strong> @Model.Skills</p>
-            <p><strong>Senses:</strong> @Model.Senses</p>
-            <p><strong>Languages:</strong> @Model.Languages</p>
-            <p><strong>Challenge:</strong> @Model.Challenge</p>
-        </div>
-
-        <div class="traits">
-            <h3>Traits</h3>
-            <p>@Model.Traits</p>
-        </div>
-
-        @if (!string.IsNullOrEmpty(Model.Actions))
-        {
-            <div class="actions">
-                <h3>Actions</h3>
-                <p>@Model.Actions</p>
-            </div>
-        }
-
-        @if (!string.IsNullOrEmpty(Model.LegendaryActions))
-        {
-            <div class="legendary-actions">
-                <h3>Legendary Actions</h3>
-                <p>@Model.LegendaryActions</p>
-            </div>
-        }
-
-        @if (!string.IsNullOrEmpty(Model.DamageImmunities))
-        {
-            <div class="damage-immunities">
-                <h3>Damage Immunities</h3>
-                <p>@Model.DamageImmunities</p>
-            </div>
-        }
-
-        @if (!string.IsNullOrEmpty(Model.ConditionImmunities))
-        {
-            <div class="condition-immunities">
-                <h3>Condition Immunities</h3>
-                <p>@Model.ConditionImmunities</p>
-            </div>
-        }
-
-        @if (!string.IsNullOrEmpty(Model.DamageResistances))
-        {
-            <div class="damage-resistances">
-                <h3>Damage Resistances</h3>
-                <p>@Model.DamageResistances</p>
-            </div>
-        }
-
-        @if (!string.IsNullOrEmpty(Model.DamageVulnerabilities))
-        {
-            <div class="damage-vulnerabilities">
-                <h3>Damage Vulnerabilities</h3>
-                <p>@Model.DamageVulnerabilities</p>
-            </div>
-        }
-    </div>
-</div>
+  
