@@ -1,11 +1,11 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 img {
@@ -18,12 +18,12 @@ img {
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
@@ -52,6 +52,7 @@ body {
     color: rgb(242, 141, 107);
     padding: 20px;
 }
+
 #horizontal-container {
     display: flex;
     flex-wrap: wrap;
@@ -65,7 +66,7 @@ body {
 
 #column {
     flex: 1;
-    margin-right: 20px; 
+    margin-right: 20px;
 }
 
 #attributes, #abilities, .other-details {
@@ -79,5 +80,47 @@ body {
 #ability-column {
     display: flex;
     flex-direction: column;
-    width: 50%; 
+    width: 50%;
 }
+
+.search-bar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: goldenrod;
+}
+h1.display-4 {
+    color: gold
+}
+.custom-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    .custom-table th, .custom-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+    }
+
+    .custom-table th {
+        background-color: #333;
+        color: rgb(242, 141, 107);
+        font-weight: bold;
+    }
+
+    
+
+.monster-image {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+.details-link {
+    color: rgb(242, 141, 107);
+    text-decoration: none;
+}
+
+    .details-link:hover {
+        text-decoration: underline;
+    }

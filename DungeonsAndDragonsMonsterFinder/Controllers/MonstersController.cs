@@ -51,5 +51,11 @@ namespace DungeonsAndDragonsMonsterFinder.Controllers
             var monster = repo.GetMonster(monsterId);
             return View(monster);
         }
+
+        public IActionResult SearchMonstersActions(string action)
+        {
+            var searchResults = repo.SearchMonstersActions(action);
+            return View(searchResults);
+        }
     }
 }

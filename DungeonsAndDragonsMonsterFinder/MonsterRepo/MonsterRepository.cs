@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using DungeonsAndDragonsMonsterFinder.Models;
 using System.Data;
+using System.Diagnostics;
 
 namespace DungeonsAndDragonsMonsterFinder.MonsterRepo
 {
@@ -103,7 +104,89 @@ namespace DungeonsAndDragonsMonsterFinder.MonsterRepo
         }
 
 
-        public Monsters GetMonster(string monsterId)
+        public IEnumerable<Monsters> SearchMonstersActions(string action)
+        {
+            string query = "SELECT * FROM Monsters WHERE Actions LIKE CONCAT('%', @action, '%')";
+            switch (action)
+            {
+                case "Beak":
+                    return _conn.Query<Monsters>(query, new { action = "Beak" });
+                case "Bite":
+                    return _conn.Query<Monsters>(query, new { action = "Bite" });
+                case "Claw":
+                    return _conn.Query<Monsters>(query, new { action = "Claw" });
+                case "Club":
+                    return _conn.Query<Monsters>(query, new { action = "Club" });
+                case "Corrupting Touch":
+                    return _conn.Query<Monsters>(query, new { action = "Corrupting Touch" });
+                case "Crush":
+                    return _conn.Query<Monsters>(query, new { action = "Crush" });
+                case "Dagger":
+                    return _conn.Query<Monsters>(query, new { action = "Dagger" });
+                case "Enlarge":
+                    return _conn.Query<Monsters>(query, new { action = "Enlarge" });
+                case "Fist":
+                    return _conn.Query<Monsters>(query, new { action = "Fist" });
+                case "Gore":
+                    return _conn.Query<Monsters>(query, new { action = "Gore" });
+                case "Greataxe":
+                    return _conn.Query<Monsters>(query, new { action = "Greataxe" });
+                case "Greatclub":
+                    return _conn.Query<Monsters>(query, new { action = "Greatclub" });
+                case "Life Drain":
+                    return _conn.Query<Monsters>(query, new { action = "Life Drain" });
+                case "Longsword":
+                    return _conn.Query<Monsters>(query, new { action = "Longsword" });
+                case "Mace":
+                    return _conn.Query<Monsters>(query, new { action = "Mace" });
+                case "MorningStar":
+                    return _conn.Query<Monsters>(query, new { action = "MorningStar" });
+                case "Multi Attack":
+                    return _conn.Query<Monsters>(query, new { action = "Multiattack" });
+                case "Paralyzing Touch":
+                    return _conn.Query<Monsters>(query, new { action = "Paralyzing Touch" });
+                case "Psuedopod":
+                    return _conn.Query<Monsters>(query, new { action = "Psuedopod" });
+                case "Quaterstaff":
+                    return _conn.Query<Monsters>(query, new { action = "Quaterstaff" });
+                case "Rake":
+                    return _conn.Query<Monsters>(query, new { action = "Rake" });
+                case "Ram":
+                    return _conn.Query<Monsters>(query, new { action = "Ram" });
+                case "Scimitar":
+                    return _conn.Query<Monsters>(query, new { action = "Scimitar" });
+                case "Shortsword":
+                    return _conn.Query<Monsters>(query, new { action = "Shortsword" });
+                case "Slam":
+                    return _conn.Query<Monsters>(query, new { action = "Slam" });
+                case "Spear":
+                    return _conn.Query<Monsters>(query, new { action = "Spear" });
+                case "Spiked Bone Club":
+                    return _conn.Query<Monsters>(query, new { action = "Spiked Bone Club" });
+                case "Sting":
+                    return _conn.Query<Monsters>(query, new { action = "Sting" });
+                case "Strength Drain":
+                    return _conn.Query<Monsters>(query, new { action = "Strength Drain" });
+                case "Tail":
+                    return _conn.Query<Monsters>(query, new { action = "Tail" });
+                case "Tentacles":
+                    return _conn.Query<Monsters>(query, new { action = "Tentacles" });
+                case "Touch":
+                    return _conn.Query<Monsters>(query, new { action = "Touch" });
+                case "Tusk":
+                    return _conn.Query<Monsters>(query, new { action = "Tusk" });
+                case "War Pick":
+                    return _conn.Query<Monsters>(query, new { action = "War Pick" });
+                case "Warhammer":
+                    return _conn.Query<Monsters>(query, new { action = "Warhammer" });
+                case "Withering Touch":
+                    return _conn.Query<Monsters>(query, new { action = "Withering Touch" });
+                default:
+                    return Enumerable.Empty<Monsters>();
+            }
+
+        }
+           public Monsters GetMonster(string monsterId)
         {
             return _conn.QuerySingle<Monsters>("SELECT * FROM Monsters WHERE MonsterId = @MonsterId", new { MonsterId = monsterId });
         }

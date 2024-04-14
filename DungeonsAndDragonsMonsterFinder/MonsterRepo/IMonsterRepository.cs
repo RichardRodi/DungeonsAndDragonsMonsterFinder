@@ -14,6 +14,8 @@ namespace DungeonsAndDragonsMonsterFinder.MonsterRepo
 
         IEnumerable<Monsters> SearchMonstersTraits(string trait);
 
+        IEnumerable<Monsters> SearchMonstersActions(string action);
+
         Monsters GetMonster(string name);
     }
 }
