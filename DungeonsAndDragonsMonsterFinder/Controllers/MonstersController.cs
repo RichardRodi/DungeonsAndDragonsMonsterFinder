@@ -1,5 +1,4 @@
-﻿using DungeonsAndDragonsMonsterFinder.Models;
-using DungeonsAndDragonsMonsterFinder.MonsterRepo;
+﻿using DungeonsAndDragonsMonsterFinder.MonsterRepo;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DungeonsAndDragonsMonsterFinder.Controllers
@@ -8,7 +7,7 @@ namespace DungeonsAndDragonsMonsterFinder.Controllers
     {
         private readonly IMonsterRepository repo;
 
-        // Have all your data //
+
         public MonstersController(IMonsterRepository repo)
         {
             this.repo = repo;
@@ -56,6 +55,25 @@ namespace DungeonsAndDragonsMonsterFinder.Controllers
         {
             var searchResults = repo.SearchMonstersActions(action);
             return View(searchResults);
+        }
+
+        public IActionResult SearchMonstersMeta(string meta)
+        {
+            var searchResults = repo.SearchMonstersMeta(meta);
+            return View(searchResults);
+        }
+        public IActionResult SearchMonstersChallenge(string challenge)
+        {
+            var searchResults = repo.SearchMonstersChallenge(challenge);
+            return View(searchResults);
+        }
+        public IActionResult RandomMonster()
+        {
+            var monsters = repo.GetAllMonsters().ToList();
+            var random = new Random();
+            var randomMonster = monsters[random.Next(monsters.Count)];
+
+            return View(randomMonster);
         }
     }
 }

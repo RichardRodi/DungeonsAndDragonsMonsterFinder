@@ -1,4 +1,3 @@
-using DungeonsAndDragonsMonsterFinder.Controllers;
 using DungeonsAndDragonsMonsterFinder.MonsterRepo;
 using MySql.Data.MySqlClient;
 using System.Data;

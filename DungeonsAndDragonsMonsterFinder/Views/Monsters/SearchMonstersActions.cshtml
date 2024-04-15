@@ -3,7 +3,6 @@
 <style>
     body {
         background-color: rgb(32,32,32);
-        
         background-image: none;
     }
 </style>
@@ -19,56 +18,71 @@
         </p>
     }
 
+
     @using (Html.BeginForm("SearchMonstersMetaSize", "Monsters", FormMethod.Post))
     {
         <p>
             Size:
             <select name="size">
-                <option value="Tiny">Tiny</option>
-                <option value="Small">Small</option>
-                <option value="Medium">Medium</option>
-                <option value="Large">Large</option>
-                <option value="Huge">Huge</option>
-                <option value="Gargantuan">Gargantuan</option>
+                <option value="--">Sizes</option>
+                @foreach (var size in new List<string>
+            {
+            "Tiny", "Small", "Medium", "Large", "Huge", "Gargantuan"
+
+            })
+                {
+                    <option value="@size">@size</option>
+                }
             </select>
             <input type="submit" value="Sort" />
         </p>
     }
+    @using (Html.BeginForm("SearchMonstersChallenge", "Monsters", FormMethod.Post))
+    {
+        <p>
+            Challenge Level:
+            <select name="challenge">
+                <option value="--">Challenge</option>
+                @foreach (var challenge in new List<string>
+            {
+            "0", "1/8", "1/4", "1/2", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"
+
+            })
+                {
+                    <option value="@challenge">@challenge</option>
+                }
+            </select>
+            <input type="submit" value="Sort" />
+        </p>
+    }
+</div>
+<div class="search-bar">
 
     @using (Html.BeginForm("SearchMonstersLanguages", "Monsters", FormMethod.Post))
     {
         <p>
-            Language:
+            Languages:
             <select name="language">
-                <option value="--">No Language</option>
-                <option value="Abyssal">Abyssal</option>
-                <option value="Aquan">Aquan</option>
-                <option value="Auran">Auran</option>
-                <option value="Blink Dog">Blink Dog</option>
-                <option value="Celestial">Celestial</option>
-                <option value="Common">Common</option>
-                <option value="creator">Creator</option>
-                <option value="Deep Speech">Deep Speech</option>
-                <option value="Draconic">Draconic</option>
-                <option value="Elvish">Elvish</option>
-                <option value="Giant">Giant</option>
-                <option value="Ignan">Ignan</option>
-                <option value="Infernal">Infernal</option>
-                <option value="Sphinx">Sphinx</option>
-                <option value="Telepathy">Telepathy</option>
-                <option value="Thieves">Thieves</option>
-                <option value="Undercommon">Undercommon</option>
+                <option value="--">Languages</option>
+                @foreach (var language in new List<string>
+            {
+            "Abyssal", "Aquan", "Auran", "Blink Dog", "Celestial", "Common", "creator", "Deep Speech",
+            "Draconic", "Elvish", "Giant", "Ignan", "Infernal", "Sphinx", "Telepathy", "Thieves", "Undercommon"
+
+            })
+                {
+                    <option value="@language">@language</option>
+                }
             </select>
             <input type="submit" value="Sort" />
         </p>
     }
-
     @using (Html.BeginForm("SearchMonstersActions", "Monsters", FormMethod.Post))
     {
         <p>
             Action:
             <select name="action">
-                <option value="--">No Action</option>
+                <option value="--">Actions</option>
                 @foreach (var action in new List<string>
             {
             "Beak", "Bite", "Claw", "Club", "Corrupting Touch", "Crush", "Dagger", "Enlarge", "Fist", "Gore",
@@ -84,13 +98,30 @@
             <input type="submit" value="Sort" />
         </p>
     }
+    @using (Html.BeginForm("SearchMonstersMeta", "Monsters", FormMethod.Post))
+    {
+        <p>
+            Alignment:
+            <select name="meta">
+                <option value="--">Alignment</option>
+                @foreach (var meta in new List<string>
+            {
+            "Lawful Good", "Neutral Good", "Chaotic Good", "Lawful Neutral", "Neutral", "Chaotic Neutral", "Lawful Evil", "Neutral Evil", "Chaotic Evil", "Unaligned"
+            })
+                {
+                    <option value="@meta">@meta</option>
+                }
+            </select>
+            <input type="submit" value="Sort" />
+        </p>
+    }
 </div>
 
 
 <h1 style="color:darkgoldenrod">Monster List</h1>
 
 
-<table class="table custom-table">
+<table class="custom-table">
     <thead>
         <tr>
             <th>MonsterID</th>
@@ -106,7 +137,7 @@
                 <td style="color: rgb(242, 141, 107);">@monster.MonsterId</td>
                 <td><img src="@monster.img_url" alt="@monster.Name" class="monster-image" /></td>
                 <td style="color: rgb(242, 141, 107);">@monster.Name</td>
-                <td><a href="/Monsters/IndividualView?MonsterId=@monster.MonsterId" class="details-link">View Details</a></td>
+                <td><a href="/Monsters/IndividualView?MonsterId=@monster.MonsterId" class="details-link" style="color: blue;">View Details</a></td>
             </tr>
         }
     </tbody>
