@@ -116,7 +116,9 @@
         </p>
     }
 </div>
-
+<div style="display: block">
+    <a href="/Monsters/InsertMonster/">Create a New Monster!</a>
+</div>
 
 <h1 style ="color:darkgoldenrod">Monster List</h1>
 
@@ -134,7 +136,7 @@
         @foreach (var monster in Model)
         {
             <tr>
-                <td style="color: rgb(242, 141, 107);">@monster.MonsterId</td>
+                <td><a href="/Monsters/GetMonster/@monster.MonsterId">@monster.MonsterId</a></td>
                 <td><img src="@monster.img_url" alt="@monster.Name" class="monster-image" /></td>
                 <td style="color: rgb(242, 141, 107);">@monster.Name</td>
                 <td><a href="/Monsters/IndividualView?MonsterId=@monster.MonsterId" class="details-link" style="color: blue;">View Details</a></td>

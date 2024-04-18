@@ -1,9 +1,7 @@
 ﻿using Dapper;
 using DungeonsAndDragonsMonsterFinder.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Data;
-using System.Diagnostics;
-using System.Drawing;
-using System.Security.Policy;
 
 namespace DungeonsAndDragonsMonsterFinder.MonsterRepo
 {
@@ -188,7 +186,7 @@ namespace DungeonsAndDragonsMonsterFinder.MonsterRepo
             }
 
         }
-           public Monsters GetMonster(string monsterId)
+        public Monsters GetMonster(int monsterId)
         {
             return _conn.QuerySingle<Monsters>("SELECT * FROM Monsters WHERE MonsterId = @MonsterId", new { MonsterId = monsterId });
         }
@@ -302,6 +300,28 @@ namespace DungeonsAndDragonsMonsterFinder.MonsterRepo
                     return Enumerable.Empty<Monsters>();
             }
 
+        }
+
+        public IEnumerable<Monsters> SearchMonstersID()
+        {
+            throw new NotImplementedException();
+        }
+        public void UpdateMonster(Monsters monster)
+        {
+
+            _conn.Execute("UPDATE monsters SET Name = @name, Meta = @meta WHERE MonsterId = @id",
+             new { name = monster.Name, meta = monster.Meta, id = monster.MonsterId });
+        }
+
+        public void InsertMonster(Monsters monsterToInsert)
+        {
+            _conn.Execute("INSERT INTO monsters (NAME, META, ARMORCLASS, STR, MONSTERID) VALUES (@name, @meta, @armorClass, @str, @monsterID);",
+                new { name = monsterToInsert.Name, meta = monsterToInsert.Meta, armorClass = monsterToInsert.ArmorClass, str = monsterToInsert.STR, monsterID = monsterToInsert.MonsterId });
+        }
+
+        public void DeleteMonster(Monsters monster)
+        {
+            _conn.Execute("DELETE FROM Monsters WHERE MonsterId = @id;", new { id = monster.MonsterId });
         }
     }
 }

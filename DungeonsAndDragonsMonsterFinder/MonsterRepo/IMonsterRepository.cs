@@ -6,6 +6,8 @@ namespace DungeonsAndDragonsMonsterFinder.MonsterRepo
     {
         IEnumerable<Monsters> GetAllMonsters();
 
+        IEnumerable<Monsters> SearchMonstersID();
+
         IEnumerable<Monsters> SearchMonstersName(string searchStringName);
 
         IEnumerable<Monsters> SearchMonstersMetaSize(string size);
@@ -19,6 +21,13 @@ namespace DungeonsAndDragonsMonsterFinder.MonsterRepo
         IEnumerable<Monsters> SearchMonstersMeta(string meta);
 
         IEnumerable<Monsters> SearchMonstersChallenge(string challenge);
-        Monsters GetMonster(string name);
+        Monsters GetMonster(int id);
+
+        void UpdateMonster(Monsters monster);
+
+        void InsertMonster(Monsters monsterToInsert);
+
+        public void DeleteMonster(Monsters monster);
+
     }
 }

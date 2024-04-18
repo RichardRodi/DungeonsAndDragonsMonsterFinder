@@ -1,0 +1,29 @@
+﻿@model Monsters
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Your Title</title>
+    <style>
+        body {
+            background-image: none;
+        }
+    </style>
+</head>
+<body>
+    <h2>Update @Model.Name</h2>
+
+    @using (Html.BeginForm("UpdateMonsterToDatabase", "Monsters", "Post"))
+    {
+        <input asp-for="MonsterId" type="hidden" value="@Model.MonsterId" />
+
+        <label asp-for="Name" class="control-label custom-label">Name</label>
+        <input type="text" name="Name" class="form-control" value="@Model.Name" />
+
+        <label asp-for="Meta" class="control-label custom-label">Meta</label>
+        <input type="text" name="Meta" class="form-control" value="@Model.Meta" />
+        <input type="submit" value="Update Monster" class="btn btn-primary" />
+    }
+</body>
+</html>

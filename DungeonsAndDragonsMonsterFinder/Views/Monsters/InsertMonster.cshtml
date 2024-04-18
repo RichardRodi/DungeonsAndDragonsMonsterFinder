@@ -1,0 +1,35 @@
+﻿@model Monsters
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Your Title</title>
+    <style>
+        body {
+            background-image: none;
+        }
+    </style>
+</head>
+<body>
+<h2 style ="color: rgb(145, 141, 107);">Create a New Monster</h2>
+
+@using (Html.BeginForm("InsertMonsterToDatabase", "Monsters", FormMethod.Post))
+{
+    <label asp-for="Name" class="control-label custom-label ">Name</label>
+    <input asp-for="Name" class="form-control" />
+
+    <label asp-for="Meta" class="control-label custom-label">Meta</label>
+    <input asp-for="Meta" class="form-control" />
+
+        <label asp-for="ArmorClass" class="control-label custom-label">Armor Class</label>
+        <input asp-for="ArmorClass" class="form-control" />
+
+    <label asp-for="STR" class="control-label custom-label ">Strength</label>
+    <input type="number" step="1" name="STR" class="form-control" />
+
+    <input type="submit" value="Create Monster" class="btn btn-primary" />
+}
+</body>
+</html>

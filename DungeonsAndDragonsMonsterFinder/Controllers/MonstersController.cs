@@ -1,4 +1,5 @@
-﻿using DungeonsAndDragonsMonsterFinder.MonsterRepo;
+﻿using DungeonsAndDragonsMonsterFinder.Models;
+using DungeonsAndDragonsMonsterFinder.MonsterRepo;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DungeonsAndDragonsMonsterFinder.Controllers
@@ -45,7 +46,7 @@ namespace DungeonsAndDragonsMonsterFinder.Controllers
             return View(searchResults);
         }
 
-        public IActionResult IndividualView(string monsterId)
+        public IActionResult IndividualView(int monsterId)
         {
             var monster = repo.GetMonster(monsterId);
             return View(monster);
@@ -74,6 +75,44 @@ namespace DungeonsAndDragonsMonsterFinder.Controllers
             var randomMonster = monsters[random.Next(monsters.Count)];
 
             return View(randomMonster);
+        }
+        public IActionResult GetMonster(int id)
+        {
+            var monster = repo.GetMonster(id);
+            return View(monster);
+        }
+        public IActionResult UpdateMonster(int id)
+        {
+            Monsters monster = repo.GetMonster(id);
+            if (monster == null)
+            {
+                return View("ProductNotFound");
+            }
+            return View(monster);
+        }
+        public IActionResult UpdateMonsterToDatabase(Monsters monster)
+        {
+            repo.UpdateMonster(monster);
+
+            return RedirectToAction("GetMonster", new { id = monster.MonsterId });
+        }
+
+
+        public IActionResult InsertMonster()
+        {
+
+            return View();
+        }
+        public IActionResult InsertMonsterToDatabase(Monsters monster)
+        {
+            repo.InsertMonster(monster);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult DeleteMonster(Monsters monster)
+        {
+            repo.DeleteMonster(monster);
+            return RedirectToAction("Index");
         }
     }
 }

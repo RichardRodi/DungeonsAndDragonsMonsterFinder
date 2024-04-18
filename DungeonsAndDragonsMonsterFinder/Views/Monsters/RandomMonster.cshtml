@@ -125,7 +125,11 @@
 </div>
 
 
+
 <div id="monsterBox" class="flex-container">
+    <div style="display: block">
+        <a href="/Monsters/UpdateMonster/@Model.MonsterId">Update this Monster</a>
+    </div>
     <div id="monster-image">
         <img src="@Model.img_url" />
     </div>
@@ -227,5 +231,14 @@
                 <p>@Model.DamageVulnerabilities</p>
             </div>
             }
+       
+        <div style="display: block">
+
+                @using (Html.BeginForm("DeleteMonster", "Monsters", "Post"))
+                {
+                <input type="hidden" asp-for="MonsterId" value="@Model.MonsterId" />
+                <input type="submit" onclick="return confirm('Are you sure?')" value="Delete this monster" />
+                }
+        </div>
     </div>
 </div>
