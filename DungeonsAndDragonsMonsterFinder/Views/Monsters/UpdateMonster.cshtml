@@ -14,16 +14,93 @@
 <body>
     <h2>Update @Model.Name</h2>
 
-    @using (Html.BeginForm("UpdateMonsterToDatabase", "Monsters", "Post"))
+    @using (Html.BeginForm("UpdateMonsterToDatabase", "Monsters", FormMethod.Post))
     {
+         <div class="row">
+        <div class="col-md-4">
         <input asp-for="MonsterId" type="hidden" value="@Model.MonsterId" />
 
         <label asp-for="Name" class="control-label custom-label">Name</label>
-        <input type="text" name="Name" class="form-control" value="@Model.Name" />
+        <input asp-for="Name" class="form-control" />
 
         <label asp-for="Meta" class="control-label custom-label">Meta</label>
-        <input type="text" name="Meta" class="form-control" value="@Model.Meta" />
+        <input asp-for="Meta" class="form-control" />
+
+        <label asp-for="ArmorClass" class="control-label custom-label">Armor Class</label>
+        <input asp-for="ArmorClass" class="form-control" />
+       
+        <label asp-for="HitPoints" class="control-label custom-label">Hit Points</label>
+        <input asp-for="HitPoints" class="form-control" />
+
+        <label asp-for="Speed" class="control-label custom-label">Speed</label>
+        <input asp-for="Speed" class="form-control" />
+
+		<label asp-for="STR" class="control-label custom-label">Strength</label>
+		<input asp-for="STR" class="form-control" />
+
+        <label asp-for="DEX" class="control-label custom-label">Dexterity</label>
+        <input asp-for="DEX" class="form-control" />
+        
+        <label asp-for="CON" class="control-label custom-label">Constitution</label>
+        <input asp-for="CON" class="form-control" />
+            </div>
+            <div class="col-md-4">
+
+        <label asp-for="INT" class="control-label custom-label">Intelligence</label>
+        <input asp-for="INT" class="form-control" />
+
+        <label asp-for="WIS" class="control-label custom-label">Wisdom</label>
+        <input asp-for="WIS" class="form-control" />
+
+        <label asp-for="CHA" class="control-label custom-label">Charisma</label>
+        <input asp-for="CHA" class="form-control" />
+
+        <label asp-for="SavingThrows" class="control-label custom-label">Saving Throws</label>
+        <input asp-for="SavingThrows" class="form-control" />
+		
+        <label asp-for="Skills" class="control-label custom-label">Skills</label>
+        <input asp-for="Skills" class="form-control" />
+
+        <label asp-for="Senses" class="control-label custom-label">Senses</label>
+        <input asp-for="Senses" class="form-control" />
+
+        <label asp-for="Languages" class="control-label custom-label">Languages</label>
+        <input asp-for="Languages" class="form-control" />
+
+        <label asp-for="Challenge" class="control-label custom-label">Challenge</label>
+        <input asp-for="Challenge" class="form-control" />
+
+        <label asp-for="Traits" class="control-label custom-label">Traits</label>
+        <input asp-for="Traits" class="form-control" />
+            </div>
+            <div class="col-md-4">
+        <label asp-for="Actions" class="control-label custom-label">Actions</label>
+        <input asp-for="Actions" class="form-control" />
+
+        <label asp-for="LegendaryActions" class="control-label custom-label">Legendary Actions</label>
+        <input asp-for="LegendaryActions" class="form-control" />
+
+        <label asp-for="img_url" class="control-label custom-label">Image URL</label>
+        <input asp-for="img_url" class="form-control" />
+           
+        <label asp-for="DamageImmunities" class="control-label custom-label">Damage Immunities</label>
+        <input asp-for="DamageImmunities" class="form-control" />
+
+        <label asp-for="ConditionImmunities" class="control-label custom-label">Condition Immunities</label>
+        <input asp-for="ConditionImmunities" class="form-control" />
+
+        <label asp-for="DamageResistances" class="control-label custom-label">Damage Resistances</label>
+        <input asp-for="DamageResistances" class="form-control" />
+
+        <label asp-for="DamageVulnerabilities" class="control-label custom-label">Damage Vulnerabilities</label>
+        <input asp-for="DamageVulnerabilities" class="form-control" />
+
+        <label asp-for="Reactions" class="control-label custom-label">Reactions</label>
+        <input asp-for="Reactions" class="form-control" />
+
         <input type="submit" value="Update Monster" class="btn btn-primary" />
+            </div>
+        </div>
     }
 </body>
 </html>

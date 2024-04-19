@@ -1,7 +1,12 @@
 ﻿using Dapper;
 using DungeonsAndDragonsMonsterFinder.Models;
 using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Asn1.Cmp;
+using Org.BouncyCastle.Utilities.Encoders;
+using System.Collections.Generic;
+using System;
 using System.Data;
+using System.Xml.Linq;
 
 namespace DungeonsAndDragonsMonsterFinder.MonsterRepo
 {
@@ -309,15 +314,115 @@ namespace DungeonsAndDragonsMonsterFinder.MonsterRepo
         public void UpdateMonster(Monsters monster)
         {
 
-            _conn.Execute("UPDATE monsters SET Name = @name, Meta = @meta WHERE MonsterId = @id",
-             new { name = monster.Name, meta = monster.Meta, id = monster.MonsterId });
+            _conn.Execute(@"UPDATE monsters 
+                    SET Name = @name, 
+                        Meta = @meta, 
+                        ArmorClass = @armorClass, 
+                        STR = @str, 
+                        MONSTERID = @monsterID, 
+                        HitPoints = @hitPoints, 
+                        Speed = @speed, 
+                        DEX = @dex, 
+                        DEX_mod = @dexMod, 
+                        CON = @con, 
+                        CON_mod = @conMod, 
+                        `INT` = @inti, 
+                        INT_mod = @intMod, 
+                        WIS = @wis, 
+                        WIS_mod = @wisMod, 
+                        CHA = @cha, 
+                        CHA_mod = @chaMod, 
+                        SavingThrows = @savingThrows, 
+                        Skills = @skills, 
+                        Senses = @senses, 
+                        Languages = @languages, 
+                        Challenge = @challenge, 
+                        Traits = @traits, 
+                        Actions = @actions, 
+                        LegendaryActions = @legendaryActions, 
+                        img_url = @imgUrl, 
+                        DamageImmunities = @damageImmunities, 
+                        ConditionImmunities = @conditionImmunities, 
+                        DamageResistances = @damageResistances, 
+                        DamageVulnerabilities = @damageVulnerabilities, 
+                        Reactions = @reactions
+                    WHERE MonsterId = @id",
+                    new
+                    {
+                        name = monster.Name,
+                        meta = monster.Meta,
+                        armorClass = monster.ArmorClass,
+                        str = monster.STR,
+                        monsterID = monster.MonsterId,
+                        hitPoints = monster.HitPoints,
+                        speed = monster.Speed,
+                        dex = monster.DEX,
+                        dexMod = monster.DEX_mod,
+                        con = monster.CON,
+                        conMod = monster.CON_mod,
+                        inti = monster.INT,
+                        intMod = monster.INT_mod,
+                        wis = monster.WIS,
+                        wisMod = monster.WIS_mod,
+                        cha = monster.CHA,
+                        chaMod = monster.CHA_mod,
+                        savingThrows = monster.SavingThrows,
+                        skills = monster.Skills,
+                        senses = monster.Senses,
+                        languages = monster.Languages,
+                        challenge = monster.Challenge,
+                        traits = monster.Traits,
+                        actions = monster.Actions,
+                        legendaryActions = monster.LegendaryActions,
+                        imgUrl = monster.img_url,
+                        damageImmunities = monster.DamageImmunities,
+                        conditionImmunities = monster.ConditionImmunities,
+                        damageResistances = monster.DamageResistances,
+                        damageVulnerabilities = monster.DamageVulnerabilities,
+                        reactions = monster.Reactions,
+                        id = monster.MonsterId
+                    });
         }
 
         public void InsertMonster(Monsters monsterToInsert)
         {
-            _conn.Execute("INSERT INTO monsters (NAME, META, ARMORCLASS, STR, MONSTERID) VALUES (@name, @meta, @armorClass, @str, @monsterID);",
-                new { name = monsterToInsert.Name, meta = monsterToInsert.Meta, armorClass = monsterToInsert.ArmorClass, str = monsterToInsert.STR, monsterID = monsterToInsert.MonsterId });
+            _conn.Execute("INSERT INTO monsters (NAME, META, ARMORCLASS, STR, MONSTERID, HitPoints, Speed, DEX, DEX_mod, CON, CON_mod, `INT`, INT_mod, WIS, WIS_mod, CHA, CHA_mod, SavingThrows, Skills, Senses, Languages, Challenge, Traits, Actions, LegendaryActions, img_url, DamageImmunities, ConditionImmunities, DamageResistances, DamageVulnerabilities, Reactions) VALUES (@name, @meta, @armorClass, @str, @monsterID, @hitPoints, @speed, @dex, @dexMod, @con, @conMod, @inti, @intMod, @wis, @wisMod, @cha, @chaMod, @savingThrows, @skills, @senses, @languages, @challenge, @traits, @actions, @legendaryActions, @imgUrl, @damageImmunities, @conditionImmunities, @damageResistances, @damageVulnerabilities, @reactions);",
+                new
+                {
+                    name = monsterToInsert.Name,
+                    meta = monsterToInsert.Meta,
+                    armorClass = monsterToInsert.ArmorClass,
+                    str = monsterToInsert.STR,
+                    monsterID = monsterToInsert.MonsterId,
+                    hitPoints = monsterToInsert.HitPoints,
+                    speed = monsterToInsert.Speed,
+                    dex = monsterToInsert.DEX,
+                    dexMod = monsterToInsert.DEX_mod,
+                    con = monsterToInsert.CON,
+                    conMod = monsterToInsert.CON_mod,
+                    inti = monsterToInsert.INT,
+                    intMod = monsterToInsert.INT_mod,
+                    wis = monsterToInsert.WIS,
+                    wisMod = monsterToInsert.WIS_mod,
+                    cha = monsterToInsert.CHA,
+                    chaMod = monsterToInsert.CHA_mod,
+                    savingThrows = monsterToInsert.SavingThrows,
+                    skills = monsterToInsert.Skills,
+                    senses = monsterToInsert.Senses,
+                    languages = monsterToInsert.Languages,
+                    challenge = monsterToInsert.Challenge,
+                    traits = monsterToInsert.Traits,
+                    actions = monsterToInsert.Actions,
+                    legendaryActions = monsterToInsert.LegendaryActions,
+                    imgUrl = monsterToInsert.img_url,
+                    damageImmunities = monsterToInsert.DamageImmunities,
+                    conditionImmunities = monsterToInsert.ConditionImmunities,
+                    damageResistances = monsterToInsert.DamageResistances,
+                    damageVulnerabilities = monsterToInsert.DamageVulnerabilities,
+                    reactions = monsterToInsert.Reactions
+                });
         }
+
 
         public void DeleteMonster(Monsters monster)
         {

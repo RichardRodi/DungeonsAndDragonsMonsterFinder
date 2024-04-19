@@ -155,3 +155,8 @@ h1.display-4 {
 .custom-label {
     color: rgb(145, 141, 107);
 }
+
+.form-control {
+    max-width: 300px; 
+    width: auto;
+}
